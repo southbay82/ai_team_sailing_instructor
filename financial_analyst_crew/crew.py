@@ -2,7 +2,8 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_groq import ChatGroq 1
+from langchain_groq import ChatGroq 
+from openai import OpenAI
 
 
 @CrewBase
@@ -12,7 +13,14 @@ class FinancialAnalystCrew():
     tasks_config = 'config/tasks.yaml'
 
     def __init__(self) -> None:
-        self.groq_llm = ChatGroq(temperature=0, model_name="mixtral8x7b-3268")
+        # Use Groq Cloud
+        #self.groq_llm = ChatGroq(temperature=0, model_name="mixtral8x7b-3268")
+        self.groq_llm = ChatGroq(temperature=0, model_name="llama3-8b-8192")
+        
+        # Chat with an intelligent assistant in your terminal
+        # Point to the local server
+        #self.groq_llm = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
+        
 
     @agent
     def company_researcher(self) -> Agent:

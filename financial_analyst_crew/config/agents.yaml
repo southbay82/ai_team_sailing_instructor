@@ -8,7 +8,7 @@ company_researcher:
   allow_delation: false
   verbose: true
 
-  company_analyst:
+company_analyst:
   role: >
     Financial Analyst
   goal: >
